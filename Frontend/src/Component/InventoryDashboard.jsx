@@ -211,6 +211,10 @@ const InventoryDashboard = () => {
 
         </div>
         <div className="main_dashboard">
+            <div className="navbar">
+
+            </div>
+            <div className="dashboard_chart">
                {dash &&(<Dashboard />)}
                {report && (<Report/>)}
                 {product && (<Product/>)}
@@ -219,6 +223,7 @@ const InventoryDashboard = () => {
                    {profile && (<Profile/>)}
                     {help && (<Help/>)}
 
+        </div>
         </div>
     </div>
   )
