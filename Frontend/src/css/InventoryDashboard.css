@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard_container{
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.side_bar{
+    width: 15%;
+    height: 98%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    
+
+}
+.logo{
+    width: 80%;
+    height: 10%;
+    /* background-color:beige; */
+    background-color: white;
+    background: url("../image/Logo.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.nav_option{
+    width: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20% 0;
+}
+.option_btn{
+    width: 95%;
+    height: 13%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 0 10%;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: white;
+    font-weight: 500;
+    text-align: start;
+    /* background-color: aqua; */
+}
+.option_btn:hover{
+    background-color: #2585f8;
+    color: white;
+
+}
+.main_dashboard{
+    width: 82%;
+    height: 98%;
+    background-color: white;
+    border-radius: 5px;
+}
+/* .fa-bars{
+    position: absolute;
+    left: 14%;
+    font-size: 1.5rem;
+    top: 5px;
+}
+ */
+
+ .btn_active{
+    background-color: #2585f8;
+    color: white;
+ }
+
+
+@media screen and (max-width: 1200px) {
+ .side_bar {
+ width: 0;
+ }
+ .main_dashboard {
+ width: 100%;
+}
+/* .fa-bars{
+    left: 6px;
+} */
+}
