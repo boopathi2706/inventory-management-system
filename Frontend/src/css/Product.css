@@ -2,9 +2,10 @@
     width: 100%;
     height: 100%;
     justify-content: center;
-    /* display: flex; */
+    display: flex;
     /* background-color: #a0e904; */
     overflow: scroll;
+   align-items:center;
 }
 
 .styled-table {

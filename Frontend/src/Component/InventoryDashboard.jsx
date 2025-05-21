@@ -212,7 +212,11 @@ const InventoryDashboard = () => {
         </div>
         <div className="main_dashboard">
             <div className="navbar">
-
+                 <div className="search_box">
+                    <input type="text" className="search_input" placeholder="Search Here..." />
+                    <button className="nav_btn"><i className="fa-solid fa-magnifying-glass"></i></button>
+                 </div>
+                 <div className="nav_profile"></div>
             </div>
             <div className="dashboard_chart">
                {dash &&(<Dashboard />)}
