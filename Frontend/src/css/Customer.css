@@ -1,4 +1,4 @@
-.product_container{
+.customer_container{
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -7,7 +7,7 @@
     overflow: scroll;
 }
 
-.styled-table {
+.styledcos-table {
   width: 95%;
   border-collapse: collapse;
   /* font-family: Arial, sans-serif; */
@@ -18,49 +18,49 @@
  
 }
 
-.styled-table thead tr {
+.styledcos-table thead tr {
   background-color:#2585f8;
   color: white;
   
  
 }
 
-.styled-table th,
-.styled-table td {
+.styledcos-table th,
+.styledcos-table td {
   padding: 12px 10px;
   border: 1px solid #dddddd;
   text-align: center;
    cursor: pointer;
    
 }
-.styled-table thead th:first-child {
+.styledcos-table thead th:first-child {
   border-top-left-radius: 5px;
 }
 
-.styled-table thead th:last-child {
+.styledcos-table thead th:last-child {
   border-top-right-radius: 5px;
 }
-.styled-table tbody tr:last-child td:first-child {
+.styledcos-table tbody tr:last-child td:first-child {
   border-bottom-left-radius: 5px;
 }
 
-.styled-table tbody tr:last-child td:last-child {
+.styledcos-table tbody tr:last-child td:last-child {
   border-bottom-right-radius: 5px;
 }
-.styled-table tbody tr:nth-child(even) {
+.styledcos-table tbody tr:nth-child(even) {
   background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:hover {
+.styledcos-table tbody tr:hover {
   background-color: #e0f7fa;
 }
-.styled-table tbody tr:nth-child(even) button {
+.styledcos-table tbody tr:nth-child(even) button {
   background-color: #f3f3f3;
 }
-.styled-table tbody tr:hover button {
+.styledcos-table tbody tr:hover button {
   background-color: #e0f7fa;
 }
-.styled-table button {
+.styledcos-table button {
   padding: 6px 10px;
   /* background-color: #2585f8; */
   /* color: white; */
@@ -76,11 +76,11 @@
   /* cursor: pointer; */
   font-size: 1rem;
 }
-.fa-pen-to-square{
+.fa-customer{
    
     cursor: pointer;
 }
-.fa-pen-to-square:hover{
+.fa-customer:hover{
      color: #2585f8;
 }
 .fa-trash{
@@ -91,7 +91,7 @@
 }
 
 
-.edit_popup{
+.customer_edit_popup{
     width: 400px;
     height: 400px;
     position: absolute;
@@ -106,7 +106,7 @@
     border-left: 7px solid #2585f8;
    
 }
-.insert_popup{
+.customer_insert_popup{
     width: 400px;
     height: 400px;
     position: absolute;
@@ -121,11 +121,11 @@
     border-left: 7px solid #2585f8;
    
 }
-.product_details_title{
+.customer_details_title{
     text-align: center;
     font-size: 1.2rem;
 }
-.edit_values{
+.customer_edit_values{
     width: 90%;
     height: 15%;
     display: flex;
@@ -134,10 +134,10 @@
     justify-content: start;
     
 }
-.label_edit{
+.customer_label_edit{
     font-size: 1rem;
 }
-.input_edit{
+.customer_input_edit{
     width: 90%;
     height: 60%;
      font-size: 1rem;
@@ -145,7 +145,7 @@
      padding-left: 2%;
     
 }
-.edit_btn{
+.customer_edit_btn{
     width: 60%;
     height: 10%;
     background-color: #2585f8;
@@ -157,13 +157,13 @@
     cursor: pointer;
 
 }
-.edit_btn:hover{
+.customer_edit_btn:hover{
     background-color: #2584f8ac;
 }
-.pop_edit_down{
-    animation: pop_edit_down 1s forwards;
+.customer_pop_edit_down{
+    animation: customer_pop_edit_down 1s forwards;
 }
-@keyframes pop_edit_down {
+@keyframes customer_pop_edit_down {
       0%{
          top: -600px;
       }
@@ -175,10 +175,10 @@
       }
 
 }
-.pop_edit_up{
-    animation: pop_edit_up 1s forwards;
+.customer_pop_edit_up{
+    animation: customer_pop_edit_up 1s forwards;
 }
-@keyframes pop_edit_up {
+@keyframes customer_pop_edit_up {
       0%{
          top: 20px;
       }
@@ -190,7 +190,7 @@
       }
 
 }
-.edit_close_mark{
+.customer_edit_close_mark{
     position: absolute;
     top: 20px;
     left: 90%;
@@ -198,7 +198,7 @@
     color: red;
     cursor: pointer;
 }
-.edit_close_mark:hover{
+.customer_edit_close_mark:hover{
     color: rgba(255, 0, 0, 0.725);
 }
 
@@ -206,10 +206,10 @@
 
 
 
-.pop_insert_down{
-    animation: pop_insert_down 1s forwards;
+.customer_pop_insert_down{
+    animation: customer_pop_insert_down 1s forwards;
 }
-@keyframes pop_insert_down {
+@keyframes customer_pop_insert_down {
       0%{
          top: -600px;
       }
@@ -221,10 +221,10 @@
       }
 
 }
-.pop_insert_up{
-    animation: pop_insert_up 1s forwards;
+.customer_pop_insert_up{
+    animation: customer_pop_insert_up 1s forwards;
 }
-@keyframes pop_insert_up {
+@keyframes customer_pop_insert_up {
       0%{
          top: 20px;
       }
@@ -236,7 +236,7 @@
       }
 
 }
-.insert_close_mark{
+.customer_insert_close_mark{
     position: absolute;
     top: 20px;
     left: 90%;
@@ -244,11 +244,11 @@
     color: red;
     cursor: pointer;
 }
-.insert_close_mark:hover{
+.customer_insert_close_mark:hover{
     color: rgba(255, 0, 0, 0.725);
 }
 
-.insert_data_btn{
+.customer_insert_data_btn{
     position: absolute;
     bottom: 20px;
     right: 40px;
