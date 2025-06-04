@@ -1,0 +1,27 @@
+[
+    {
+        "label":"apple",
+        "revunue":230,
+        "loss":300
+    },
+    {
+        "label":"pineapple",
+        "revunue":330,
+         "loss":100
+    },
+    {
+        "label":"orange",
+        "revunue":730,
+         "loss":400
+    },
+    {
+        "label":"cherry",
+        "revunue":340,
+         "loss":100
+    },
+    {
+        "label":"others",
+        "revunue":530,
+         "loss":20
+    }
+]

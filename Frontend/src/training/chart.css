@@ -1,0 +1,25 @@
+.charts_container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    height:100vh;
+    background-color: aqua;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.chart1{
+    width: 97%;
+    height: 40%;
+    background-color: white;
+}
+.chart2{
+    width: 48%;
+    height: 40%;
+    background-color: white;
+}
+.chart3{
+    width: 48%;
+    height: 40%;
+    background-color: white;
+}

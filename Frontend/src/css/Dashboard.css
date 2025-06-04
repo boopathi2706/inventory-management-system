@@ -1,0 +1,98 @@
+.dashboard_con{
+    width: 100%;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    align-items:center;
+    justify-content: space-evenly;
+}
+.total_count_of_all{
+    width: 100%;
+    height: 30%;
+    /* background-color: blanchedalmond; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.total_count_of_all div{
+    width:20%;
+    height: 80%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor:not-allowed;
+}
+.total_count_of_all div:nth-child(1){
+    border-left: 6px solid rgb(8, 232, 252);
+}
+.total_count_of_all div:nth-child(2){
+    border-left: 6px solid rgb(2, 201, 148);
+}
+.total_count_of_all div:nth-child(3){
+    border-left: 6px solid rgb(201, 2, 191);
+}
+.total_count_of_all div:nth-child(4){
+    border-left: 6px solid rgb(201, 2, 78);
+}
+.total_count_of_all div span{
+    width: 60%;
+    height: 50%;
+   
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+    justify-content: center;
+   
+}
+.total_count_of_all div i{
+    font-size: 1.5rem;
+}
+.small_cart_name{
+    font-size: 1rem;
+    line-height: 3;
+    
+    padding: 0;
+    margin: 0;
+}
+.smart_cart_price{
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    color:royalblue;
+}
+.charts_areas{
+    width: 100%;
+    height: 58%;
+    /* background-color: blanchedalmond; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.charts_areas div:nth-child(1){
+    width: 30%;
+    height: 90%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.charts_areas div:nth-child(2){
+    width: 59%;
+    height: 90%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
