@@ -1,0 +1,37 @@
+.report_conntainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 88vh;
+    background-color: aquamarine;
+}
+.report_conntainer div:nth-child(2){
+    width: 68%;
+    height: 48%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.report_conntainer div{
+    border-radius: 10px;
+}
+.report_conntainer div:nth-child(3){
+    width: 68%;
+    height: 48%;
+    background-color: white;
+}
+.report_conntainer div:nth-child(1){
+    width: 30%;
+    height: 48%;
+    background-color: white;
+}
+.report_conntainer div:nth-child(4){
+    width: 30%;
+    height: 48%;
+    background-color: white;
+}
