@@ -29,4 +29,44 @@ const GetProduct = async (req,res)=>{
     }
 }
 
-module.exports = {CreateProduct,GetProduct};
+const GetByProductWithId=async(req,res)=>{
+    try {
+        const id=req.params.id;
+        const data= await Product.findById(id);
+        if(!data){
+            res.status(501).json({message:"data not found"});
+        }
+        res.json(data);
+    } catch (error) {
+        res.status(501).json({error:`Can't get the product ${error}`});
+    }
+}
+
+
+const DeleteProduct=async(req,res)=>{
+    try {
+        const id=req.params.id;
+        await Product.findByIdAndDelete(id);
+        res.status(201).json({message:"success"})
+    } catch (error) {
+         res.status(501).json({error:`internal error:  ${error}`});
+    }
+}
+
+
+const UpdateProduct=async(req,res)=>{
+    try {
+         const id = req.params.id;
+    const data =req.body;
+    const updated_data=await Product.findByIdAndUpdate(id,data,{ new: true });
+    if(!updated_data){
+        res.status(501).json({message:"the data not found"})
+    }
+    res.status(201).json(updated_data);
+    } catch (error) {
+        res.status(501).json({error:`internal error:  ${error}`});
+    }
+   
+}
+
+module.exports = {CreateProduct,GetProduct,DeleteProduct,UpdateProduct,GetByProductWithId};
