@@ -1,5 +1,5 @@
 import "../css/Customer.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 const Customer = () => {
       const[customerEditBoxOpen ,setCustomerEditBoxOpen]=useState(false);
       const [customername ,setCustomername]=useState("");
@@ -10,18 +10,15 @@ const Customer = () => {
       const [insertmobileno,setInsertMobileno]=useState("");
       const [insertaddress,setInsertAddress]=useState("");
       const [customerIndex,setCustomerIndex]=useState(-1);
-      const [customerData, setCustomerData] = useState([
-  { CustomerName: "Ravi Kumar", MobileNo: "9876543210", Address: "No.12, MG Road, Bangalore" },
-  { CustomerName: "Anita Sharma", MobileNo: "9123456780", Address: "45 Park Street, Kolkata" },
-  { CustomerName: "Rahul Verma", MobileNo: "9988776655", Address: "56 Anna Nagar, Chennai" },
-  { CustomerName: "Deepa Joshi", MobileNo: "9090909090", Address: "89 Nehru Street, Coimbatore" },
-  { CustomerName: "Suresh Iyer", MobileNo: "8877665544", Address: "123 Sector 17, Chandigarh" },
-  { CustomerName: "Pooja Mehta", MobileNo: "9988001122", Address: "Flat 2B, Powai, Mumbai" },
-  { CustomerName: "Karthik Reddy", MobileNo: "9345678901", Address: "Gachibowli, Hyderabad" },
-  { CustomerName: "Meena Das", MobileNo: "9012345678", Address: "Salt Lake, Kolkata" },
-  { CustomerName: "Amit Patel", MobileNo: "9765432109", Address: "SG Highway, Ahmedabad" },
-  { CustomerName: "Lakshmi Nair", MobileNo: "9091234567", Address: "Technopark, Trivandrum" 
-}]);
+      const [customerData, setCustomerData] = useState([]);
+
+
+ useEffect(() => {
+    fetch("http://localhost:3000/app/customer/get-customer")
+      .then((res) => res.json())
+      .then((item) => setCustomerData(item))
+      .catch((err) => console.log("can't fetch the data"));
+  });
 
     
       const editCustomer = (index) => {
@@ -30,9 +27,9 @@ const Customer = () => {
            edit.classList.add("customer_pop_edit_down");
           edit.classList.remove("customer_pop_edit_up");
          setCustomerEditBoxOpen(true);
-          setCustomername(customerData[index].CustomerName);
-          setMobileno(customerData[index].MobileNo);
-          setAddress(customerData[index].Address);
+          setCustomername(customerData[index].customerName);
+          setMobileno(customerData[index].phoneNo);
+          setAddress(customerData[index].address);
          }
          else{
           alert("close the edit popup");
@@ -52,15 +49,13 @@ const Customer = () => {
     
      const insertCustomer = (e) => {
       e.preventDefault();
-    
-      // If the insert popup is not open, open it and stop further execution
-      console.log(customerinsertBoxOpen)
+
       if (!customerinsertBoxOpen) {
         let insert = document.getElementById("customer_insert_popup");
         insert.classList.add("customer_pop_edit_down");
         insert.classList.remove("customer_pop_edit_up");
         setCustomerInsertBoxOpen(true);
-        return; // ✅ Exit here to avoid inserting without user input
+        return; 
       }
       
       
@@ -87,22 +82,33 @@ const Customer = () => {
         return;
     }
     
-      // Add new product to data
+     
       const newProduct = {
-        CustomerName: insertcustomername.trim(),
-        MobileNo:insertmobileno.trim(),
-        Address :insertaddress.trim(),
+        customerName: insertcustomername.trim(),
+        phoneNo:insertmobileno.trim(),
+        address :insertaddress.trim(),
       };
     
-      setCustomerData([...customerData, newProduct]);
-    
-      // Optionally close the insert popup after insertion
+      fetch("http://localhost:3000/app/customer/create-customer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to insert customer");
+        return res.json();
+      })
+      .then((response) => {
+        alert("customer inserted successfully!");
+         setCustomerData([...customerData, newProduct]);
+      })
+      .catch((error) => console.error("Error inserting customer:", error));
+
+     
       let insert = document.getElementById("customer_insert_popup");
       insert.classList.remove("customer_pop_edit_down");
       insert.classList.add("customer_pop_edit_up");
-      
-    
-      // Clear the input fields
+  
       setInsertCustomername("");
       setInsertMobileno("");
       setInsertAddress("");
@@ -113,21 +119,36 @@ const Customer = () => {
     
     
     
-     const handleProductDetailsUpdate = (e) => {
+     const handleProductDetailsUpdate = async(e) => {
         e.preventDefault();
         if(customerIndex==-1){
           alert("invalid product");
         }
-        const updatedData = customerData.map((item, index) =>
-          index === customerIndex
-            ? {
-                ...item,
-                CustomerName: customername,
-                MobileNo:mobileno,
-                Address: address,
-              }
-            : item
-        );
+        const selectedCustomer = customerData[customerIndex];
+
+        const updatedCustomer = {
+      customerName: customername,
+                phoneNo:Number(mobileno),
+                address: address,
+  };
+
+      try {
+    const response = await fetch(`http://localhost:3000/app/customer/update-customer/${selectedCustomer._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedCustomer),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update product in backend");
+    }
+
+    
+    const updatedData = customerData.map((item, index) =>
+      index === customerIndex
+        ? { ...item, ...updatedCustomer }
+        : item
+    );
        
         setCustomerData(updatedData);
         setCustomerIndex(-1);
@@ -139,11 +160,23 @@ const Customer = () => {
         edit.classList.remove("customer_pop_edit_down");
         edit.classList.add("customer_pop_edit_up");
         console.log("Product updated successfully");
-      };
-    
-      const handleDeleteCustomer = (DeleteIndex) => {
-      const updatedData = customerData.filter((_, index) => index !== DeleteIndex);
-      setCustomerData(updatedData); 
+     } catch (error) {
+    console.error("Error updating product:", error);
+  }
+};
+     const handleDeleteCustomer = (DeleteIndex) => {
+         const nameToDelete = customerData[DeleteIndex]._id;
+
+    fetch(`http://localhost:3000/app/customer/delete-customer/${nameToDelete}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        const updatedData = customerData.filter((_, index) => index !== DeleteIndex);
+        setData(updatedData);
+        console.log("Deleted successfully");
+      })
+      .catch((error) => console.error("Error deleting customer:", error));
     };
     
       return (
@@ -163,9 +196,9 @@ const Customer = () => {
         {customerData.map((item, index) => (
           <tr key={index}>
             <td>{index + 1}</td>
-            <td>{item.CustomerName}</td>
-            <td>{item.MobileNo}</td>
-            <td>{item.Address}</td>
+            <td>{item.customerName}</td>
+            <td>{item.phoneNo}</td>
+            <td>{item.address}</td>
             <td>
               <button
                 className="edit-btn-table"
